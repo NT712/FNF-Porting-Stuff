@@ -8,9 +8,9 @@ import flixel.text.FlxText;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.Json;
-import ui.Hitbox;
-import ui.AndroidControls.Config;
-import ui.FlxVirtualPad;
+import androidcontrols.Hitbox;
+import androidcontrols.AndroidControls.Config;
+import androidcontrols.FlxVirtualPad;
 
 using StringTools;
 
@@ -48,7 +48,7 @@ class CastomAndroidControls extends MusicBeatState
 		config = new Config();
 		curSelected = config.getcontrolmode();
 
-		menuBG = new FlxSprite().loadGraphic(Paths.image('androidcontrols/menuBG'));
+		menuBG = new FlxSprite().loadGraphic(Paths.image('androidcontrols/menu/menuBG'));
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
@@ -85,7 +85,7 @@ class CastomAndroidControls extends MusicBeatState
 		inputvari.screenCenter(X);
 		add(inputvari);
 
-		var ui_tex = Paths.getSparrowAtlas('androidcontrols/arrows');//thanks Andromeda Engine
+		var ui_tex = Paths.getSparrowAtlas('androidcontrols/menu/arrows');//thanks Andromeda Engine
 
 		leftArrow = new FlxSprite(inputvari.x - 60,inputvari.y - 10);
 		leftArrow.frames = ui_tex;
