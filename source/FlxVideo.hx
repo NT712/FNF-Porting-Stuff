@@ -26,7 +26,7 @@ class FlxVideo extends FlxBasic {
 				}
 			}
 		}
-		WebView.open(AndroidTools.getFileUrl(name), null, ['http://exitme']);
+		WebView.open(AndroidTools.getFileUrl(name), null, ['http://exitme/']);
 		#end
 	}
 }
