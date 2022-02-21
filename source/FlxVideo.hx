@@ -8,21 +8,17 @@ import flixel.FlxG;
 class FlxVideo extends FlxBasic {
 	public var finishCallback:Void->Void = null;
 
-        #if android
-        var player:WebView;
-        #end
-
 	public function new(name:String) {
 		super();
 
 		#if android
-		player.onClose = function(){
+		WebView.onClose = function(){
         	        trace("WebView has been closed!");
 	                if (finishCallback != null){
 				finishCallback();
 			}
 		}
-		player.onURLChanging = function(url:String){
+		WebView.onURLChanging = function(url:String){
 	                trace("WebView is about to open: " + url);
 	                if (url == 'http://exitme'){
 	        	        if (finishCallback != null){
@@ -30,7 +26,7 @@ class FlxVideo extends FlxBasic {
 				}
 			}
 		}
-		player.open(AndroidTools.getFileUrl(name), null, ['http://exitme']);
+		WebView.open(AndroidTools.getFileUrl(name), null, ['http://exitme']);
 		#end
 	}
 }
