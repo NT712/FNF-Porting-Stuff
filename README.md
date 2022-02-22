@@ -3,7 +3,7 @@ The Things im using when i port a mod to android
 
 # This methot is focused for psych engine mods ports so if you want to port anoder mods with it you have to moddfy some code
 
-## Installation:
+## Instructions:
 
 1. You Need to install AndroidTools, Extensioon-Webview and to replace the linc_luajit
 
