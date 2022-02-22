@@ -329,4 +329,159 @@ add
 	#end
 ```
 
-5. comeing soon :)
+5. Setup MusicBeatState.hx
+
+in the lines you import things add
+```haxe
+#if android
+import flixel.input.actions.FlxActionInput;
+import android.AndroidControls.AndroidControlsSetup;
+import android.FlxVirtualPad;
+#end
+```
+
+after those lines
+```haxe
+	inline function get_controls():Controls
+		return PlayerSettings.player1.controls;
+```
+
+add
+```haxe
+	#if android
+	var _virtualpad:FlxVirtualPad;
+	var androidc:AndroidControls;
+	var trackedinputsUI:Array<FlxActionInput> = [];
+	var trackedinputsNOTES:Array<FlxActionInput> = [];
+	#end
+	
+	#if android
+	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
+		_virtualpad = new FlxVirtualPad(DPad, Action);
+		_virtualpad.alpha = 0.75;
+		add(_virtualpad);
+		controls.setVirtualPadUI(_virtualpad, DPad, Action);
+		trackedinputsUI = controls.trackedinputsUI;
+		controls.trackedinputsUI = [];
+	}
+	#else
+	public function addVirtualPad(?DPad, ?Action)
+	#end
+
+	public function addAndroidControls() {
+		#if android
+        androidc = new AndroidControls();
+
+		switch (androidc.mode)
+		{
+			case VIRTUALPAD_RIGHT | VIRTUALPAD_LEFT | VIRTUALPAD_CUSTOM:
+				controls.setVirtualPadNOTES(androidc._virtualPad, FULL, NONE);
+			case HITBOX:
+				controls.setHitBoxNOTES(androidc._hitbox);
+			default:
+		}
+
+		trackedinputsNOTES = controls.trackedinputsNOTES;
+		controls.trackedinputsNOTES = [];
+
+		var camcontrol = new flixel.FlxCamera();
+		FlxG.cameras.add(camcontrol);
+		camcontrol.bgColor.alpha = 0;
+		androidc.cameras = [camcontrol];
+
+		androidc.visible = false;
+
+		add(androidc);
+		#end
+	}
+
+    public function addPadCamera() {
+		#if android
+		var camcontrol = new flixel.FlxCamera();
+		FlxG.cameras.add(camcontrol);
+		camcontrol.bgColor.alpha = 0;
+		_virtualpad.cameras = [camcontrol];
+		#end
+	}
+	
+	override function destroy() {
+		#if android
+		controls.removeFlxInput(trackedinputsUI);
+		controls.removeFlxInput(trackedinputsNOTES);	
+		#end	
+		
+		super.destroy();
+	}
+```
+
+5. Setup MusicBeatSubstate.hx
+
+in the lines you import things add
+```haxe
+#if android
+import flixel.input.actions.FlxActionInput;
+import android.AndroidControls.AndroidControlsSetup;
+import android.FlxVirtualPad;
+#end
+```
+
+after those lines
+```haxe
+	inline function get_controls():Controls
+		return PlayerSettings.player1.controls;
+```
+
+add
+```haxe
+	#if android
+	var _virtualpad:FlxVirtualPad;
+	var trackedinputsUI:Array<FlxActionInput> = [];
+	var trackedinputsNOTES:Array<FlxActionInput> = [];
+	#end
+	
+	#if android
+	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
+		_virtualpad = new FlxVirtualPad(DPad, Action);
+		_virtualpad.alpha = 0.75;
+		add(_virtualpad);
+		controls.setVirtualPadUI(_virtualpad, DPad, Action);
+		trackedinputsUI = controls.trackedinputsUI;
+		controls.trackedinputsUI = [];
+	}
+	#else
+	public function addVirtualPad(?DPad, ?Action)
+	#end
+
+    public function addPadCamera() {
+		#if android
+		var camcontrol = new flixel.FlxCamera();
+		FlxG.cameras.add(camcontrol);
+		camcontrol.bgColor.alpha = 0;
+		_virtualpad.cameras = [camcontrol];
+		#end
+	}
+	
+	override function destroy() {
+		#if android
+		controls.removeFlxInput(trackedinputsUI);
+		controls.removeFlxInput(trackedinputsNOTES);	
+		#end	
+		
+		super.destroy();
+	}
+```
+
+And Somehow you finised to add the android controls to your psych engine copy
+
+now on every state/substate add
+```haxe
+	addVirtualPad(FULL, A_B);
+
+	//if you want it to have a camera
+	addPadCamera()
+
+	//on Playstate.hx after all
+	//obj.camera = ...
+	//add
+	addAndroidControls();
+```
