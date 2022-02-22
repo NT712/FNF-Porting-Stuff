@@ -1,6 +1,6 @@
 #if android
 import extension.webview.WebView;
-import android.*;
+import android.AndroidTools;
 #end
 import flixel.FlxBasic;
 import flixel.FlxG;
@@ -13,15 +13,15 @@ class FlxVideo extends FlxBasic {
 
 		#if android
 		WebView.onClose = function(){
-        	        trace("WebView has been closed!");
-	                if (finishCallback != null){
+			trace("WebView has been closed!");
+			if (finishCallback != null){
 				finishCallback();
 			}
 		}
 		WebView.onURLChanging = function(url:String){
-	                trace("WebView is about to open: " + url);
-	                if (url == 'http://exitme/'){
-	        	        if (finishCallback != null){
+			trace("WebView is about to open: " + url);
+			if (url == 'http://exitme/'){
+				if (finishCallback != null){
 					finishCallback();
 				}
 			}
