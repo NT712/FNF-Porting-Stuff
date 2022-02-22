@@ -20,7 +20,7 @@ class FlxVideo extends FlxBasic {
 		}
 		WebView.onURLChanging = function(url:String){
 	                trace("WebView is about to open: " + url);
-	                if (url == 'http://exitme'){
+	                if (url == 'http://exitme/'){
 	        	        if (finishCallback != null){
 					finishCallback();
 				}
