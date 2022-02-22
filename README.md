@@ -583,7 +583,7 @@ add
  	SUtil.gameCrashCheck();
 ```	
 
-10. Video Cutscenes
+11. Video Cutscenes
 In FlxVideo.hx add
 
 before those imports
