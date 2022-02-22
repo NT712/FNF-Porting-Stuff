@@ -572,6 +572,13 @@ this will chack for android storage permisions and for the assets/mods directory
 
 10. On Crash Application Alert
 
+on project.xml add
+```xml
+	<!-- Akways enable Null Object Reference check -->
+	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
+	<haxedef name="HXCPP_STACK_LINE" if="release" />
+```
+
 on Main.hx after
 ```haxe
  	public function new()
