@@ -538,13 +538,13 @@ you can set one with
 
 9. sys.FileSystem and sys.io.File
 
-this is not working in android storgae but on phone storage will work with this
+this is not working in your game storgae but on phone storage will work with this
 
 ```haxe
 		SUtil.getPath() + 
 ```
 this will make the game to use the phone storage
-butyou will have to add one thing in Your source
+but you will have to add one thing in Your source
 
 in Main.hx before 
 ```haxe
