@@ -5,7 +5,7 @@ The Things im using when i port a mod to android
 
 ## Instructions:
 
-1. You Need to install AndroidTools, Extensioon-Webview and to replace the linc_luajit
+1. You Need to install AndroidTools, Extension-Webview and to replace the linc_luajit
 
 To Install Them You Need To Open Command prompt/PowerShell And To Tipe
 ```cmd
