@@ -626,7 +626,7 @@ add
 ```	
 this will use .html file to play a video
 
-to play a video in this format you need the html file the video(recomanded .mp4) and a blank png
+to play a video in this format you need the html file, the video(recomanded .mp4) and a blank png
 
 the html shoud be like this
 ```html
