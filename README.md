@@ -642,7 +642,7 @@ the html shoud be like this
 <script type='text/javascript'>
     document.getElementById('player').addEventListener('ended', myHandler, false);
     function myHandler(e) {
-        document.location.href='http://exitme';
+        document.location.href='http://exitme/';
     }
 </script>
 ```	
