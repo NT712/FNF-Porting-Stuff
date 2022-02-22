@@ -584,10 +584,9 @@ add
 ```	
 
 11. Video Cutscenes
-In FlxVideo.hx add
 
 before those imports
-on Main.hx after
+on FlxVideo.hx after
 ```haxe
 	#else
 	import openfl.events.Event;
