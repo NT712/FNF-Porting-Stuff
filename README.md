@@ -551,7 +551,7 @@ you can set one with
 
 9. sys.FileSystem and sys.io.File
 
-this is not working in your game storgae but on phone storage will work with this
+this is not working in your game storage but on phone storage will work with this
 
 ```haxe
 		SUtil.getPath() + 
